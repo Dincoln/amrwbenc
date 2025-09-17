@@ -5,3 +5,33 @@ Rate Wideband (AMR-WB) audio codec. The library is based on a codec
 implementation by VisualOn as part of the Stagefright framework from
 the Google Android project.
 
+编译鸿蒙版本的amrwb encoder
+
+outputfile="输出路径"
+sdkpath=鸿蒙sdk路径（例如：/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/native）
+
+x86_64版本：
+1： ./configure \
+    --host=x86_64-linux-ohos \
+    --prefix=${outputfile}/x86_64 \
+    --enable-static \
+    --disable-shared \
+    CC=/${sdkpath}/llvm/bin/x86_64-unknown-linux-ohos-clang \
+    CFLAGS="--sysroot=${sdkpath}/sysroot -fPIC"
+
+2： make
+
+3: make install
+
+arm64-v8a版本：
+1： ./configure \                             
+    --host=aarch64-linux-ohos \
+    --prefix=${outputfile}/arm64-v8a \
+    --enable-static \
+    --disable-shared \
+    CC=${sdkpath}/llvm/bin/aarch64-unknown-linux-ohos-clang \
+    CFLAGS="--sysroot=${sdkpath}/sysroot -fPIC"
+
+2： make
+
+3: make install
